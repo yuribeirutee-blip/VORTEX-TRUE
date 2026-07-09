@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VORTEX TRUE LOJA</title>
     <style>
-        /* Efeito de Vórtice Animado no Fundo */
+        /* Estilo Base inspirado no Tema Wassofc com Fundo de Flocos/Estrelas Roxas */
         body {
-            background-color: #06040a;
+            background-color: #0b0713;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -16,138 +16,233 @@
             position: relative;
         }
 
-        /* Fundo animado simulando partículas de um vórtice */
+        /* Efeito de Fundo Temático com linhas/flocos roxos estilizados */
         body::before {
             content: "";
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, rgba(0,0,0,0) 60%),
-                        radial-gradient(circle, rgba(168,85,247,0.05) 0%, rgba(0,0,0,0) 40%);
-            animation: vortexRotate 20s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(rgba(147, 51, 234, 0.15) 1px, transparent 0),
+                radial-gradient(rgba(168, 85, 247, 0.1) 2px, transparent 0);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
             z-index: -1;
         }
 
-        @keyframes vortexRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Moldura de Teia/Flocos Roxos nas bordas simulando a imagem de inspiração */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(147, 51, 234, 0.3);
+            box-shadow: inset 0 0 100px rgba(112, 26, 179, 0.4);
+            pointer-events: none;
+            z-index: 99;
         }
 
         h1 {
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            color: #fff;
-            text-shadow: 0 0 15px #a855f7, 0 0 30px #a855f7;
-            font-size: 2.5rem;
+            letter-spacing: 4px;
+            margin-top: 50px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-size: 2.6rem;
+            font-weight: 900;
         }
 
-        /* Grade que organiza os produtos */
+        .subtitulo {
+            text-align: center;
+            color: #a855f7;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        /* Grade de Produtos */
         .container-produtos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
             padding: 10px;
         }
 
-        /* Estilo dos Cards */
+        /* Cards Estilo Premium com Imagem Embutida */
         .card-produto {
-            background: rgba(15, 10, 25, 0.85);
-            border: 2px solid #2d1f4e;
-            border-radius: 12px;
+            background: #130d21;
+            border: 1px solid #2e1c4e;
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            position: relative;
         }
 
-        /* Efeito Glow Roxo ao passar o mouse */
+        /* Efeito de Destaque com Glow Roxo e Bordas Iluminadas igual ao da foto */
         .card-produto:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: #a855f7;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+        }
+
+        /* Design das Capas dos Produtos dentro do Código */
+        .capa-produto {
+            height: 180px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #2e1c4e;
+            overflow: hidden;
+        }
+
+        /* Estilização Individual das Imagens de Capa */
+        .capa-otimizacao {
+            background: linear-gradient(135deg, #1e113a 0%, #4c1d95 100%);
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+        }
+        .capa-sensi {
+            background: linear-gradient(135deg, #1e113a 0%, #6b21a8 100%);
+            color: #a855f7;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+        }
+        .capa-mouse {
+            background: linear-gradient(135deg, #1e113a 0%, #701a75 100%);
+            color: #f472b6;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.6);
+        }
+
+        .badge-qualidade {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #000000;
+            color: #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            border: 1px solid #f59e0b;
+        }
+
+        /* Detalhes do Conteúdo do Card */
+        .info-produto {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
         }
 
         .titulo-produto {
             font-size: 1.3rem;
-            font-weight: bold;
-            margin: 0 0 15px 0;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f3e8ff;
         }
 
-        .preco {
-            font-size: 1.6rem;
-            color: #4ade80;
-            font-weight: bold;
+        .descricao-produto {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin: 0 0 20px 0;
+            line-height: 1.4;
+        }
+
+        .preco-container {
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
         }
 
-        /* Botão de Compra */
+        .preco-antigo {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-decoration: line-through;
+            margin-bottom: 2px;
+        }
+
+        .preco-atual {
+            font-size: 1.8rem;
+            color: #4ade80;
+            font-weight: 800;
+        }
+
+        .metodo-pagamento {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        /* Botão de Compra Estilo Wassofc */
         .btn-comprar {
-            display: block;
-            text-align: center;
-            background: #1e1135;
-            color: #fff;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1b112c;
+            color: #ffffff;
+            border: 1px solid #4c1d95;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            transition: all 0.2s;
-            border: 2px solid #581c87;
             cursor: pointer;
+            transition: all 0.2s ease;
             letter-spacing: 1px;
+            width: 100%;
         }
 
         .btn-comprar:hover {
             background: #a855f7;
             border-color: #c084fc;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
-        /* JANELA FLUTUANTE (MODAL PAGAMENTO) */
+        /* MODAL FLUTUANTE DE PAGAMENTO PIX */
         .modal {
             display: none; 
             position: fixed; 
-            z-index: 999; 
+            z-index: 9999; 
             left: 0;
             top: 0;
             width: 100%; 
             height: 100%; 
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(6, 4, 10, 0.9);
             backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
         }
 
         .modal-conteudo {
-            background-color: #0f0b1e;
+            background-color: #130d21;
             border: 2px solid #a855f7;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.5);
             padding: 30px;
-            border-radius: 16px;
+            border-radius: 20px;
             width: 90%;
             max-width: 400px;
             text-align: center;
             position: relative;
-            animation: abrirModal 0.3s ease-out;
+            animation: abrirModal 0.25s ease-out;
         }
 
         @keyframes abrirModal {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.85); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
@@ -156,30 +251,30 @@
             top: 15px;
             right: 20px;
             color: #a855f7;
-            font-size: 30px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s;
         }
 
         .fechar-modal:hover {
-            color: #f3e8ff;
+            color: #ffffff;
         }
 
         .modal h2 {
             margin-top: 0;
             text-transform: uppercase;
             color: #4ade80;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
         }
 
         .qrcode-container {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 14px;
             display: inline-block;
             margin: 20px 0;
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         .qrcode-container img {
@@ -189,11 +284,11 @@
         }
 
         .pix-copia {
-            background: #18122b;
-            border: 1px solid #3b2d63;
+            background: #0b0713;
+            border: 1px solid #2e1c4e;
             padding: 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
             word-break: break-all;
             margin-bottom: 15px;
             color: #c084fc;
@@ -201,15 +296,16 @@
 
         .btn-copiar {
             background: #4ade80;
-            color: #000;
+            color: #0b0713;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 12px 20px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             width: 100%;
             transition: background 0.2s;
+            letter-spacing: 1px;
         }
 
         .btn-copiar:hover {
@@ -219,52 +315,87 @@
 </head>
 <body>
 
-    <h1>VORTEX TRUE LOJA</h1>
+    <h1>LOJA OFICIAL VORTEX</h1>
+    <div class="subtitulo">Tudo que você precisa para o seu jogo</div>
 
     <div class="container-produtos">
 
-        <!-- PRODUTO 1 -->
         <div class="card-produto">
-            <div>
-                <p class="titulo-produto">Otimização</p>
-                <div class="preco">R$ 5,00</div>
+            <div class="capa-produto capa-otimizacao">
+                <span class="badge-qualidade">4K QUALITY</span>
+                <h2>OTIMIZAÇÃO<br>FPS MAX</h2>
             </div>
-            <button class="btn-comprar" onclick="abrirPagamento('Otimização', '5.00')">Comprar</button>
+            <div class="info-produto">
+                <div>
+                    <p class="titulo-produto">Otimização</p>
+                    <p class="descricao-produto">Ajustes completos para o sistema, emulador e celular rodarem liso com o máximo de FPS.</p>
+                </div>
+                <div>
+                    <div class="preco-container">
+                        <div class="preco-antigo">R$ 9,90</div>
+                        <div class="preco-atual">R$ 3,00</div>
+                        <div class="metodo-pagamento">À vista no PIX</div>
+                    </div>
+                    <button class="btn-comprar" onclick="abrirPagamento('Otimização', '3.00')">Comprar</button>
+                </div>
+            </div>
         </div>
 
-        <!-- PRODUTO 2 -->
         <div class="card-produto">
-            <div>
-                <p class="titulo-produto">Pack Sensi</p>
-                <div class="preco">R$ 3,00</div>
+            <div class="capa-produto capa-sensi">
+                <span class="badge-qualidade">VIP CONTROL</span>
+                <h2>PACK SENSI<br>VIP TRILHA</h2>
             </div>
-            <button class="btn-comprar" onclick="abrirPagamento('Pack Sensi', '3.00')">Comprar</button>
+            <div class="info-produto">
+                <div>
+                    <p class="titulo-produto">Pack Sensi</p>
+                    <p class="descricao-produto">As melhores configurações e sensibilidades calibradas para dar somente capa vermelha.</p>
+                </div>
+                <div>
+                    <div class="preco-container">
+                        <div class="preco-antigo">R$ 14,90</div>
+                        <div class="preco-atual">R$ 3,00</div>
+                        <div class="metodo-pagamento">À vista no PIX</div>
+                    </div>
+                    <button class="btn-comprar" onclick="abrirPagamento('Pack Sensi', '3.00')">Comprar</button>
+                </div>
+            </div>
         </div>
 
-        <!-- PRODUTO 3 -->
         <div class="card-produto">
-            <div>
-                <p class="titulo-produto">Tds as camisas de time da loja</p>
-                <div class="preco">R$ 3,00</div>
+            <div class="capa-produto capa-mouse">
+                <span class="badge-qualidade">PRO EXCLUSIVE</span>
+                <h2>GG MOUSE PRO<br>REGEDIT</h2>
             </div>
-            <button class="btn-comprar" onclick="abrirPagamento('Tds as camisas de time da loja', '3.00')">Comprar</button>
+            <div class="info-produto">
+                <div>
+                    <p class="titulo-produto">GG Mouse Pro</p>
+                    <p class="descricao-produto">Ajustes avançados de sensibilidade, mapeamento e precisão máxima para o emulador/mobile.</p>
+                </div>
+                <div>
+                    <div class="preco-container">
+                        <div class="preco-antigo">R$ 19,90</div>
+                        <div class="preco-atual">R$ 3,00</div>
+                        <div class="metodo-pagamento">À vista no PIX</div>
+                    </div>
+                    <button class="btn-comprar" onclick="abrirPagamento('GG Mouse Pro', '3.00')">Comprar</button>
+                </div>
+            </div>
         </div>
 
     </div>
 
-    <!-- JANELA FLUTUANTE DE PAGAMENTO -->
     <div id="janelaPix" class="modal">
         <div class="modal-conteudo">
             <span class="fechar-modal" onclick="fecharPagamento()">&times;</span>
             <h2 id="modalTitulo">Pagamento</h2>
-            <p>Escaneie o QR Code abaixo para pagar <strong><span id="modalPreco">R$ 0,00</span></strong>:</p>
+            <p style="margin-bottom: 10px;">Escaneie o QR Code abaixo para pagar <strong><span id="modalPreco">R$ 3,00</span></strong>:</p>
             
             <div class="qrcode-container">
-                <!-- Gera dinamicamente o QR Code com a sua chave Pix -->
                 <img id="qrcodeImg" src="" alt="QR Code Pix">
             </div>
 
-            <p style="font-size: 0.9rem; color: #a1a1aa; margin-bottom: 5px;">Chave Pix Copia e Cola:</p>
+            <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 5px;">Copia e Cola Pix:</p>
             <div class="pix-copia" id="chavePixTexto">2b1ac183-bc55-472b-ac67-2167a3d82d37</div>
             <button class="btn-copiar" onclick="copiarChave()">Copiar Chave Pix</button>
         </div>
@@ -277,7 +408,7 @@
             document.getElementById('modalTitulo').innerText = nomeProduto;
             document.getElementById('modalPreco').innerText = "R$ " + valor.replace('.', ',');
             
-            // API pública para gerar a imagem do QR Code baseado na sua chave Pix e valor
+            // Gerador automático de QR Code Pix integrado à sua chave pública informada
             const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020101021126580014br.gov.bcb.pix0136${minhaChavePix}5204000053039865404${valor}5802BR5915VortexTrueLoja6009SaoPaulo62070503***6304`;
             
             document.getElementById('qrcodeImg').src = qrCodeUrl;
@@ -290,10 +421,9 @@
 
         function copiarChave() {
             navigator.clipboard.writeText(minhaChavePix);
-            alert("Chave Pix copiada com sucesso! Só colar no seu banco.");
+            alert("Chave Pix copiada! É só colar na seção Pix do aplicativo do seu banco.");
         }
 
-        // Fecha a janela se clicar fora do quadrado do conteúdo
         window.onclick = function(event) {
             const modal = document.getElementById('janelaPix');
             if (event.target == modal) {
