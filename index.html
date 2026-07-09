@@ -3,157 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja de Sensi & Otimização</title>
+    <title>VORTEX TRUE LOJA</title>
     <style>
-        /* Configurações Gerais do Fundo */
+        /* Efeito de Vórtice Animado no Fundo */
         body {
-            background-color: #0b0813; /* Roxo bem escuro */
+            background-color: #06040a;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            /* Se quiser colocar uma imagem de fundo igual à do site, descomente a linha abaixo: */
-            /* background-image: url('sua-imagem-de-fundo.jpg'); */
-            background-size: cover;
-            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo animado simulando partículas de um vórtice */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, rgba(0,0,0,0) 60%),
+                        radial-gradient(circle, rgba(168,85,247,0.05) 0%, rgba(0,0,0,0) 40%);
+            animation: vortexRotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes vortexRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         h1 {
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            margin-top: 40px;
             margin-bottom: 40px;
             color: #fff;
-            text-shadow: 0 0 10px #8a2be2;
+            text-shadow: 0 0 15px #a855f7, 0 0 30px #a855f7;
+            font-size: 2.5rem;
         }
 
         /* Grade que organiza os produtos */
         .container-produtos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 10px;
         }
 
-        /* Estilo de cada Card (Produto) */
+        /* Estilo dos Cards */
         .card-produto {
-            background: rgba(20, 16, 31, 0.85); /* Fundo escuro semi-transparente */
-            border: 1px solid #2d1f4e;
+            background: rgba(15, 10, 25, 0.85);
+            border: 2px solid #2d1f4e;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
-        /* Efeito de Brilho (Glow) ao passar o mouse */
+        /* Efeito Glow Roxo ao passar o mouse */
         .card-produto:hover {
             transform: translateY(-5px);
-            border-color: #a855f7; /* Roxo neon */
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
-        }
-
-        /* Card Destaque (Igual o amarelo da imagem) */
-        .card-produto.destaque {
-            border-color: #eab308; /* Amarelo/Dourado */
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
-        }
-        .card-produto.destaque:hover {
-            box-shadow: 0 0 25px rgba(234, 179, 8, 0.8);
-        }
-
-        /* Imagem do Produto */
-        .card-produto img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        /* Detalhes do Texto */
-        .info-produto {
-            padding: 15px;
+            border-color: #a855f7;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
         }
 
         .titulo-produto {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f3e8ff;
         }
 
         .preco {
-            font-size: 1.3rem;
-            color: #4ade80; /* Verde para o preço */
+            font-size: 1.6rem;
+            color: #4ade80;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
         }
 
-        /* Botão de Compra/Acesso */
+        /* Botão de Compra */
         .btn-comprar {
             display: block;
             text-align: center;
-            background: #221a36;
+            background: #1e1135;
             color: #fff;
             text-decoration: none;
-            padding: 12px;
+            padding: 14px;
             border-radius: 8px;
             font-weight: bold;
             text-transform: uppercase;
-            transition: background 0.2s;
-            border: 1px solid #3b2d5c;
+            transition: all 0.2s;
+            border: 2px solid #581c87;
+            cursor: pointer;
+            letter-spacing: 1px;
         }
 
         .btn-comprar:hover {
             background: #a855f7;
-            border-color: #a855f7;
+            border-color: #c084fc;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
         }
 
-        .destaque .btn-comprar:hover {
-            background: #eab308;
+        /* JANELA FLUTUANTE (MODAL PAGAMENTO) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 999; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-conteudo {
+            background-color: #0f0b1e;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            animation: abrirModal 0.3s ease-out;
+        }
+
+        @keyframes abrirModal {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #a855f7;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .fechar-modal:hover {
+            color: #f3e8ff;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+            text-transform: uppercase;
+            color: #4ade80;
+            font-size: 1.5rem;
+        }
+
+        .qrcode-container {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .qrcode-container img {
+            display: block;
+            width: 200px;
+            height: 200px;
+        }
+
+        .pix-copia {
+            background: #18122b;
+            border: 1px solid #3b2d63;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-bottom: 15px;
+            color: #c084fc;
+        }
+
+        .btn-copiar {
+            background: #4ade80;
             color: #000;
-            border-color: #eab308;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-copiar:hover {
+            background: #22c55e;
         }
     </style>
 </head>
 <body>
 
-    <h1>Tudo que você precisa para o seu Jogo</h1>
+    <h1>VORTEX TRUE LOJA</h1>
 
     <div class="container-produtos">
 
-        <!-- PRODUTO 1 (DESTAQUE AMARELO) -->
-        <div class="card-produto destaque">
-            <img src="https://via.placeholder.com/300x180" alt="Capa do Produto">
-            <div class="info-produto">
-                <p class="titulo-produto">Combo Sensi VIP + Otimização FPS</p>
-                <div class="preco">R$ 29,90</div>
-                <a href="SEU_LINK_DE_PAGAMENTO_OU_WHATSAPP" class="btn-comprar">Comprar</a>
+        <!-- PRODUTO 1 -->
+        <div class="card-produto">
+            <div>
+                <p class="titulo-produto">Otimização</p>
+                <div class="preco">R$ 5,00</div>
             </div>
+            <button class="btn-comprar" onclick="abrirPagamento('Otimização', '5.00')">Comprar</button>
         </div>
 
-        <!-- PRODUTO 2 (ROXO PADRÃO) -->
+        <!-- PRODUTO 2 -->
         <div class="card-produto">
-            <img src="https://via.placeholder.com/300x180" alt="Capa do Produto">
-            <div class="info-produto">
-                <p class="titulo-produto">Pack de Regedit Mobile</p>
-                <div class="preco">R$ 14,90</div>
-                <a href="#" class="btn-comprar">Comprar</a>
+            <div>
+                <p class="titulo-produto">Pack Sensi</p>
+                <div class="preco">R$ 3,00</div>
             </div>
+            <button class="btn-comprar" onclick="abrirPagamento('Pack Sensi', '3.00')">Comprar</button>
         </div>
 
-        <!-- PRODUTO 3 (ROXO PADRÃO) -->
+        <!-- PRODUTO 3 -->
         <div class="card-produto">
-            <img src="https://via.placeholder.com/300x180" alt="Capa do Produto">
-            <div class="info-produto">
-                <p class="titulo-produto">Ajustes Avançados Emulador</p>
-                <div class="preco">R$ 19,90</div>
-                <a href="#" class="btn-comprar">Comprar</a>
+            <div>
+                <p class="titulo-produto">Tds as camisas de time da loja</p>
+                <div class="preco">R$ 3,00</div>
             </div>
+            <button class="btn-comprar" onclick="abrirPagamento('Tds as camisas de time da loja', '3.00')">Comprar</button>
         </div>
 
     </div>
 
+    <!-- JANELA FLUTUANTE DE PAGAMENTO -->
+    <div id="janelaPix" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" onclick="fecharPagamento()">&times;</span>
+            <h2 id="modalTitulo">Pagamento</h2>
+            <p>Escaneie o QR Code abaixo para pagar <strong><span id="modalPreco">R$ 0,00</span></strong>:</p>
+            
+            <div class="qrcode-container">
+                <!-- Gera dinamicamente o QR Code com a sua chave Pix -->
+                <img id="qrcodeImg" src="" alt="QR Code Pix">
+            </div>
+
+            <p style="font-size: 0.9rem; color: #a1a1aa; margin-bottom: 5px;">Chave Pix Copia e Cola:</p>
+            <div class="pix-copia" id="chavePixTexto">2b1ac183-bc55-472b-ac67-2167a3d82d37</div>
+            <button class="btn-copiar" onclick="copiarChave()">Copiar Chave Pix</button>
+        </div>
+    </div>
+
+    <script>
+        const minhaChavePix = "2b1ac183-bc55-472b-ac67-2167a3d82d37";
+
+        function abrirPagamento(nomeProduto, valor) {
+            document.getElementById('modalTitulo').innerText = nomeProduto;
+            document.getElementById('modalPreco').innerText = "R$ " + valor.replace('.', ',');
+            
+            // API pública para gerar a imagem do QR Code baseado na sua chave Pix e valor
+            const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020101021126580014br.gov.bcb.pix0136${minhaChavePix}5204000053039865404${valor}5802BR5915VortexTrueLoja6009SaoPaulo62070503***6304`;
+            
+            document.getElementById('qrcodeImg').src = qrCodeUrl;
+            document.getElementById('janelaPix').style.display = 'flex';
+        }
+
+        function fecharPagamento() {
+            document.getElementById('janelaPix').style.display = 'none';
+        }
+
+        function copiarChave() {
+            navigator.clipboard.writeText(minhaChavePix);
+            alert("Chave Pix copiada com sucesso! Só colar no seu banco.");
+        }
+
+        // Fecha a janela se clicar fora do quadrado do conteúdo
+        window.onclick = function(event) {
+            const modal = document.getElementById('janelaPix');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
-</html><img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/12e7ac77-a204-47f8-bc8c-9f5c9e48a9c9" />
+</html>
